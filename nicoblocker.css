@@ -1,0 +1,4 @@
+div#textMarquee {
+  display: none !important;
+  pointer-events: none !important;
+}
