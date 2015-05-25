@@ -11,8 +11,8 @@ test -e ~/.emacs && echo '!!!warning .emacs file exists. should be removed'
 
 # keyboard layouts
 mkdir -vp ~/Library/Keyboard\ Layouts
-ln -ivs $PWD/Dvorak-JP.icns      ~/Library/Keyboard\ Layouts
-ln -ivs $PWD/Dvorak-JP.keylayout ~/Library/Keyboard\ Layouts
-ln -ivs $PWD/Dvorak-R.icns      ~/Library/Keyboard\ Layouts
-ln -ivs $PWD/Dvorak-R.keylayout ~/Library/Keyboard\ Layouts
+cp -iv $PWD/Dvorak-JP.icns      ~/Library/Keyboard\ Layouts
+cp -iv $PWD/Dvorak-JP.keylayout ~/Library/Keyboard\ Layouts
+cp -iv $PWD/Dvorak-R.icns      ~/Library/Keyboard\ Layouts
+cp -iv $PWD/Dvorak-R.keylayout ~/Library/Keyboard\ Layouts
 

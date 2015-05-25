@@ -22,7 +22,10 @@
 (setq inhibit-startup-message t)
 (tool-bar-mode 0)
 (global-linum-mode t)
-(show-paren-mode)
+(show-paren-mode 0)
+
+;; PATH
+(exec-path-from-shell-initialize)
 
 
 ;; Font - フォントの設定、とても大事。
@@ -69,9 +72,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(haskell-process-path-ghci "/usr/local/bin/ghci")
+ '(markdown-command "pandoc -f markdown -t html")
  '(sbt:program-name "/usr/local/bin/sbt"))
 
 
+;; Proof-General
+(load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
 
 (eval-after-load "haskell-mode"
   '(progn

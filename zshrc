@@ -56,7 +56,7 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 
-PROMPT="%% "
+PROMPT="⏩  "
 precmd () {
   RPROMPT='$(__git_ps1 "(%s) ")[%c]'
 }
@@ -77,7 +77,6 @@ bindkey "^N" history-beginning-search-forward-end
 
 zmodload -i zsh/mathfunc
 
-alias xiang="xboard -variant xiangqi"
-
+umask 002
 
 cd ~/Desktop/
