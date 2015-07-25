@@ -61,10 +61,18 @@
 ;;; (これは起動時に default-frame-alist に従ったフレームが作成されない現象への対処)
 (set-face-font 'default "fontset-myfonts")
 
+;;; Rainbow
+(require 'rainbow-delimiters)
+
+;; Company
+(require 'company)
+(add-to-list 'company-backends 'company-ghc)
+(custom-set-variables '(company-ghc-show-info t))
 
 ;; Haskell
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'company-mode)
+(add-hook 'haskell-mode-hook 'turn-on-hi2)
+(add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
 (add-to-list 'completion-ignored-extensions ".hi")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -72,23 +80,37 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(haskell-process-path-ghci "/usr/local/bin/ghci")
+ '(haskell-process-type (quote cabal-repl))
+ '(haskell-stylish-on-save t)
+ '(haskell-tags-on-save t)
  '(markdown-command "pandoc -f markdown -t html")
  '(sbt:program-name "/usr/local/bin/sbt"))
 
 
+
+
+
 ;; Proof-General
-(load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+; (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
 
 (eval-after-load "haskell-mode"
   '(progn
      (define-key haskell-mode-map (kbd "C-x C-d") nil)
      (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
+     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
      (define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
      (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
      (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+     (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
      (define-key haskell-mode-map (kbd "C-c M-.") nil)
-     (define-key haskell-mode-map (kbd "C-c C-d") nil)))
+     (define-key haskell-mode-map (kbd "C-c C-d") nil)
+     (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+     (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag)
+     (define-key haskell-mode-map (kbd "C-c h") 'haskell-hoogle)))
+
+(eval-after-load 'haskell-cabal
+  '(progn
+     (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)     ))
 
 ;; Scheme
 (add-to-list 'process-coding-system-alist
