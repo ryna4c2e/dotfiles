@@ -62,7 +62,7 @@ precmd () {
 }
 
 export INCLUDE=/opt/local/include:$INCLUDE
-export PATH=/usr/local/Cellar/ruby/1.9.3-p286/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:~/.cabal/bin:/usr/local/bin:/opt/local/bin:$PATH:~/Dropbox/bin:~/Commands:/Applications/pTeX.app/teTeX/bin
+export PATH=~/bin:/usr/local/Cellar/ruby/1.9.3-p286/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:~/.cabal/bin:/usr/local/bin:/opt/local/bin:$PATH:~/Dropbox/bin:~/Commands:/Applications/pTeX.app/teTeX/bin
 export MANPATH=/opt/local/man:$MANPATH:/Applications/pTeX.app/teTeX/man
 export TRASH=~/.Trash
 export CGI_DIRECTORY=~/Sites/cgi-bin
