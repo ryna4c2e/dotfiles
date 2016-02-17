@@ -27,6 +27,13 @@
 ;; PATH
 (exec-path-from-shell-initialize)
 
+;; Dired
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (load "dired-x")
+            (setq dired-omit-files-p t)
+	    (dired-hide-details-mode)))
+
 
 ;; Font - フォントの設定、とても大事。
 ;; http://d.hatena.ne.jp/setoryohei/20110117/1295336454
