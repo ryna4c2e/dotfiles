@@ -18,6 +18,9 @@
 (set-cursor-color "Black")
 (blink-cursor-mode 1)
 
+;; Scroll
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
 ;; Startup
 (setq inhibit-startup-message t)
 (tool-bar-mode 0)
