@@ -19,6 +19,9 @@
 (set-cursor-color "Black")
 (blink-cursor-mode 1)
 
+;; Scroll
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
 ;; Startup
 (setq inhibit-startup-message t)
 (tool-bar-mode 0)
@@ -30,8 +33,16 @@
 			 :init	 (exec-path-from-shell-initialize)
 			 :ensure t)
 
+
 ;; Tab
 (setq default-tab-width 4)
+
+;; Dired
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (load "dired-x")
+            (setq dired-omit-files-p t)
+	    (dired-hide-details-mode)))
 
 ;; Font - フォントの設定、とても大事。
 ;; http://d.hatena.ne.jp/setoryohei/20110117/1295336454
@@ -133,3 +144,20 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'erase-buffer 'disabled nil)
+
+
+;; Ruby
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+(setq ruby-electric-expand-delimiters-list nil)
+
+(require 'ruby-block)
+(ruby-block-mode t)
+(setq ruby-block-highlight-toggle t)
+
+(autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
+(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+
+(require 'flycheck)
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
+(add-hook 'ruby-mode-hook 'flycheck-mode)
