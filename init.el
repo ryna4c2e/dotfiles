@@ -2,6 +2,7 @@
 
 ; Package manager
 (require 'package)
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
@@ -25,8 +26,12 @@
 (show-paren-mode 0)
 
 ;; PATH
-(exec-path-from-shell-initialize)
+(use-package exec-path-from-shell
+			 :init	 (exec-path-from-shell-initialize)
+			 :ensure t)
 
+;; Tab
+(setq default-tab-width 4)
 
 ;; Font - フォントの設定、とても大事。
 ;; http://d.hatena.ne.jp/setoryohei/20110117/1295336454
@@ -62,12 +67,13 @@
 (set-face-font 'default "fontset-myfonts")
 
 ;;; Rainbow
-(require 'rainbow-delimiters)
+(use-package rainbow-delimiters
+			 :ensure t)
 
 ;; Company
-(require 'company)
-(add-to-list 'company-backends 'company-ghc)
-(custom-set-variables '(company-ghc-show-info t))
+;(require 'company)
+;(add-to-list 'company-backends 'company-ghc)
+;(custom-set-variables '(company-ghc-show-info t))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'company-mode)
