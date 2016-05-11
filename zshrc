@@ -33,7 +33,7 @@ alias gtc=". gtc"
 alias csi="rlwrap csi -q"
 
 autoload -U compinit
-compinit
+compinit -u
 
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z} r:|[-_.]=**' '+m:{A-Z}={a-z} r:|[-_.]=**'
 
