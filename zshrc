@@ -32,7 +32,7 @@ alias ed="ed -p '> '"
 alias gtc=". gtc"
 alias csi="rlwrap csi -q"
 
-autoload -U compinit
+autoload -Uz compinit
 compinit -u
 
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z} r:|[-_.]=**' '+m:{A-Z}={a-z} r:|[-_.]=**'
@@ -56,7 +56,9 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 
-PROMPT="⏩  "
+autoload -Uz colors
+colors
+PROMPT="%{$fg[red]%}%%%{$reset_color%} "
 precmd () {
   RPROMPT='$(__git_ps1 "(%s) ")[%c]'
 }
