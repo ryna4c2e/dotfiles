@@ -1,11 +1,19 @@
-; My New Emacs setting
+;; My New Emacs settings
+
 
 ; Package manager
 (require 'package)
 
+
+;; package.el
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+(package-refresh-contents)
+
+;; use-package
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
 ;; Keymap
 (setq mac-option-modifier 'none)
@@ -27,12 +35,6 @@
 (tool-bar-mode 0)
 (global-linum-mode t)
 (show-paren-mode 0)
-
-;; PATH
-(use-package exec-path-from-shell
-			 :init	 (exec-path-from-shell-initialize)
-			 :ensure t)
-
 
 ;; Tab
 (setq default-tab-width 4)
@@ -77,57 +79,94 @@
 ;;; (これは起動時に default-frame-alist に従ったフレームが作成されない現象への対処)
 (set-face-font 'default "fontset-myfonts")
 
+;; PATH
+(use-package exec-path-from-shell
+  :init	 (exec-path-from-shell-initialize)
+  :ensure t)
+
 ;;; Rainbow
 (use-package rainbow-delimiters
-			 :ensure t)
+  :ensure t)
 
+;; avy, jump to something
+(use-package avy
+  :demand
+  :ensure t
+  :commands (avy-goto-char
+			 avy-goto-line)
+  :config
+  (progn
+	(custom-set-variables
+	 '(avy-background t)
+	 '(avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s))))
+  :bind (("C-." . avy-goto-char)
+		 ("C-," . avy-goto-line)))
+  
+;; markdown
+(use-package markdown-mode
+  :ensure t
+  :config
+  (custom-set-variables
+   '(markdown-command "pandoc -f markdown -t html")))
+   
 ;; Company
-;(require 'company)
-;(add-to-list 'company-backends 'company-ghc)
-;(custom-set-variables '(company-ghc-show-info t))
+(use-package company
+  :ensure t
+  :config
+  (progn
+	(setq company-idle-delay 0.1)
+	(setq company-minimum-prefix-length 2)
+	(setq company-selection-wrap-around t)))
+
+;; company for haskell
+(use-package company-ghc
+  :ensure t
+  :config
+  (progn
+	(add-to-list 'company-backends 'company-ghc)
+	(custom-set-variables '(company-ghc-show-info t))))
+
+(use-package hi2
+  :ensure t)
 
 ;; Haskell
-(add-hook 'haskell-mode-hook 'company-mode)
-(add-hook 'haskell-mode-hook 'turn-on-hi2)
-(add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
-(add-to-list 'completion-ignored-extensions ".hi")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(haskell-process-path-ghci "/usr/local/bin/ghci")
- '(haskell-process-type (quote cabal-repl))
- '(haskell-stylish-on-save t)
- '(haskell-tags-on-save t)
- '(markdown-command "pandoc -f markdown -t html")
- '(sbt:program-name "/usr/local/bin/sbt"))
+(use-package haskell-mode
+  :ensure t
+  :config
+  (progn
+	(add-hook 'haskell-mode-hook 'company-mode)
+	(add-hook 'haskell-mode-hook 'turn-on-hi2)
+	(add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
+	(add-to-list 'completion-ignored-extensions ".hi")
 
+	(custom-set-variables
+	 '(haskell-process-path-ghci "/usr/local/bin/ghci")
+	 '(haskell-process-type (quote cabal-repl))
+	 '(haskell-stylish-on-save t)
+	 '(haskell-tags-on-save t))
 
+	(define-key haskell-mode-map (kbd "C-x C-d") nil)
+	(define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+	(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+	(define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
+	(define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+	(define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+	(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+	(define-key haskell-mode-map (kbd "C-c M-.") nil)
+	(define-key haskell-mode-map (kbd "C-c C-d") nil)
+	(define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+	(define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag)
+	(define-key haskell-mode-map (kbd "C-c h") 'haskell-hoogle)))
 
+;(eval-after-load 'haskell-cabal
+ ; '(progn
+  ;   (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)     ))
 
 
 ;; Proof-General
 ; (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
 
-(eval-after-load "haskell-mode"
-  '(progn
-     (define-key haskell-mode-map (kbd "C-x C-d") nil)
-     (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-     (define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
-     (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
-     (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
-     (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
-     (define-key haskell-mode-map (kbd "C-c M-.") nil)
-     (define-key haskell-mode-map (kbd "C-c C-d") nil)
-     (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
-     (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag)
-     (define-key haskell-mode-map (kbd "C-c h") 'haskell-hoogle)))
 
-(eval-after-load 'haskell-cabal
-  '(progn
-     (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)     ))
 
 ;; Scheme
 (add-to-list 'process-coding-system-alist
@@ -147,17 +186,17 @@
 
 
 ;; Ruby
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
-(setq ruby-electric-expand-delimiters-list nil)
+;(require 'ruby-electric)
+;(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+;(setq ruby-electric-expand-delimiters-list nil)
 
-(require 'ruby-block)
-(ruby-block-mode t)
-(setq ruby-block-highlight-toggle t)
+;(require 'ruby-block)
+;(ruby-block-mode t)
+;(setq ruby-block-highlight-toggle t)
 
-(autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+;(autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
+;(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 
-(require 'flycheck)
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
-(add-hook 'ruby-mode-hook 'flycheck-mode)
+;(require 'flycheck)
+;(setq flycheck-check-syntax-automatically '(mode-enabled save))
+;(add-hook 'ruby-mode-hook 'flycheck-mode)
