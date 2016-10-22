@@ -83,5 +83,6 @@ umask 002
 
 # chruby
 source $(brew --prefix chruby)/share/chruby/chruby.sh
+chruby 2.3.1
 
 cd ~/Desktop/
