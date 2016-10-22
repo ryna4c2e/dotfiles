@@ -126,7 +126,7 @@
 	(add-to-list 'company-backends 'company-ghc)
 	(custom-set-variables '(company-ghc-show-info t))))
 
-(use-package hi2
+(use-package hindent
   :ensure t)
 
 ;; Haskell
@@ -135,7 +135,7 @@
   :config
   (progn
 	(add-hook 'haskell-mode-hook 'company-mode)
-	(add-hook 'haskell-mode-hook 'turn-on-hi2)
+	(add-hook 'haskell-mode-hook #'hindent-mode)
 	(add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
 	(add-to-list 'completion-ignored-extensions ".hi")
 
@@ -200,3 +200,19 @@
 ;(require 'flycheck)
 ;(setq flycheck-check-syntax-automatically '(mode-enabled save))
 ;(add-hook 'ruby-mode-hook 'flycheck-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(avy-background t)
+ '(avy-keys (quote (97 111 101 117 105 100 104 116 110 115)))
+ '(company-ghc-show-info t)
+ '(haskell-process-path-ghci "/usr/local/bin/ghci")
+ '(haskell-process-type (quote cabal-repl))
+ '(haskell-stylish-on-save t)
+ '(haskell-tags-on-save t)
+ '(markdown-command "pandoc -f markdown -t html")
+ '(package-selected-packages
+   (quote
+	(yatex use-package rust-mode rainbow-delimiters markdown-mode hindent hi2 exec-path-from-shell company-ghc avy))))
