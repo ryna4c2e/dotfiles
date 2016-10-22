@@ -81,4 +81,7 @@ zmodload -i zsh/mathfunc
 
 umask 002
 
+# chruby
+$(brew --prefix chruby)/share/chruby/auto.sh
+
 cd ~/Desktop/
