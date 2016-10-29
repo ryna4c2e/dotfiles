@@ -69,8 +69,6 @@ export MANPATH=/opt/local/man:$MANPATH:/Applications/pTeX.app/teTeX/man
 export TRASH=~/.Trash
 export CGI_DIRECTORY=~/Sites/cgi-bin
 
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
