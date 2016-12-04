@@ -129,6 +129,11 @@
 (use-package hindent
   :ensure t)
 
+
+;; Elm
+(use-package elm-mode
+  :ensure t)
+
 ;; Haskell
 (use-package haskell-mode
   :ensure t
