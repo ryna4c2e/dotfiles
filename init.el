@@ -134,6 +134,11 @@
 (use-package elm-mode
   :ensure t)
 
+;; TypeScript
+(use-package typescript-mode
+  :ensure t)
+
+
 ;; Haskell
 (use-package haskell-mode
   :ensure t
@@ -174,11 +179,11 @@
 
 
 ;; Scheme
-(add-to-list 'process-coding-system-alist
-	     '("gosh" utf-8 . utf-8))
-(setq scheme-program-name "/usr/local/bin/gosh -i")
-(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
-(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
+;; (add-to-list 'process-coding-system-alist
+;; 	     '("gosh" utf-8 . utf-8))
+;; (setq scheme-program-name "/usr/local/bin/gosh -i")
+;; (autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
+;; (autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
 
 (put 'match 'scheme-indent-function 1)
 (custom-set-faces

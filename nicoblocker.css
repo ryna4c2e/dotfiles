@@ -2,3 +2,8 @@ div#textMarquee {
   display: none !important;
   pointer-events: none !important;
 }
+
+div.MarqueeContainer {
+  display: none !important;
+  pointer-events: none !important;
+}
