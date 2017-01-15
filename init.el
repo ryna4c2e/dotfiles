@@ -15,6 +15,9 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+;; no-backups
+(setq make-backup-files nil)
+
 ;; Keymap
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
@@ -225,4 +228,4 @@
  '(markdown-command "pandoc -f markdown -t html")
  '(package-selected-packages
    (quote
-	(yatex use-package rust-mode rainbow-delimiters markdown-mode hindent hi2 exec-path-from-shell company-ghc avy))))
+	(sbt-mode yatex use-package rust-mode rainbow-delimiters markdown-mode hindent hi2 exec-path-from-shell company-ghc avy))))
