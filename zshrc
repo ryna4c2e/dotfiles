@@ -7,20 +7,10 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias javac="javac -J-Dfile.encoding=UTF-8 -encoding UTF-8 -Xlint:unchecked"
 alias java="java -Dfile.encoding=UTF-8"
-alias xcc="gcc -L/usr/X11R6/lib -lX11"
-alias glcc="gcc -framework OpenGL -framework GLUT"
-alias sdlcc='gcc `sdl-config --cflags --libs` -lSDL_image'
-alias objcc="gcc -framework Foundation"
-
-#alias clang="clang-mp-3.2"
-#alias clang++="clang++-mp-3.2 --std=c++11"
-export INCLUDE_PATH="/opt/local/include:$INCLUDE_PATH"
-export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
 
 alias editpref="vi ~/.zshrc"
 alias editenvs="open ~/.MacOSX/environment.plist"
 alias calc='open -a Calculator.app'
-
 
 alias gosh="rlwrap gosh"
 alias ocaml="rlwrap ocaml"
@@ -29,7 +19,6 @@ alias sbcl="rlwrap sbcl"
 alias swipl="swipl -q"
 alias bc="bc -q"
 alias ed="ed -p '> '"
-alias gtc=". gtc"
 alias csi="rlwrap csi -q"
 
 autoload -Uz compinit
@@ -62,12 +51,6 @@ PROMPT="%{$fg[red]%}%%%{$reset_color%} "
 precmd () {
   RPROMPT='$(__git_ps1 "(%s) ")[%c]'
 }
-
-export INCLUDE=/opt/local/include:$INCLUDE
-export PATH=~/bin:/usr/local/Cellar/ruby/1.9.3-p286/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:~/.cabal/bin:/usr/local/bin:/opt/local/bin:$PATH:~/Dropbox/bin:~/Commands:/Applications/pTeX.app/teTeX/bin
-export MANPATH=/opt/local/man:$MANPATH:/Applications/pTeX.app/teTeX/man
-export TRASH=~/.Trash
-export CGI_DIRECTORY=~/Sites/cgi-bin
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end

@@ -1,6 +1,7 @@
 ## setting up dotfiles
 # zsh
 ln -ivs $PWD/zshrc ~/.zshrc
+ln -ivs $PWD/zshenv ~/.zshenv
 ln -ivs $PWD/git-prompt.sh ~/.git-prompt.sh
 ln -ivs $PWD/zprofile ~/.zprofile
 
