@@ -63,7 +63,7 @@ zmodload -i zsh/mathfunc
 umask 002
 
 # chruby
-## source $(brew --prefix chruby)/share/chruby/chruby.sh
-## chruby 2.3.1
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
 
 cd ~/Desktop/

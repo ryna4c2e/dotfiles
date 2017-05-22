@@ -112,22 +112,22 @@
   (custom-set-variables
    '(markdown-command "pandoc -f markdown -t html")))
    
-;; Company
-(use-package company
-  :ensure t
-  :config
-  (progn
-	(setq company-idle-delay 0.1)
-	(setq company-minimum-prefix-length 2)
-	(setq company-selection-wrap-around t)))
+;; ;; Company
+;; (use-package company
+;;   :ensure t
+;;   :config
+;;   (progn
+;; 	(setq company-idle-delay 0.1)
+;; 	(setq company-minimum-prefix-length 2)
+;; 	(setq company-selection-wrap-around t)))
 
-;; company for haskell
-(use-package company-ghc
-  :ensure t
-  :config
-  (progn
-	(add-to-list 'company-backends 'company-ghc)
-	(custom-set-variables '(company-ghc-show-info t))))
+;; ;; company for haskell
+;; (use-package company-ghc
+;;   :ensure t
+;;   :config
+;;   (progn
+;; 	(add-to-list 'company-backends 'company-ghc)
+;; 	(custom-set-variables '(company-ghc-show-info t))))
 
 (use-package hindent
   :ensure t)
@@ -147,7 +147,7 @@
   :ensure t
   :config
   (progn
-	(add-hook 'haskell-mode-hook 'company-mode)
+	;; (add-hook 'haskell-mode-hook 'company-mode)
 	(add-hook 'haskell-mode-hook #'hindent-mode)
 	(add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
 	(add-to-list 'completion-ignored-extensions ".hi")
@@ -228,4 +228,4 @@
  '(markdown-command "pandoc -f markdown -t html")
  '(package-selected-packages
    (quote
-	(sbt-mode yatex use-package rust-mode rainbow-delimiters markdown-mode hindent hi2 exec-path-from-shell company-ghc avy))))
+	(company sbt-mode yatex use-package rust-mode rainbow-delimiters markdown-mode hindent hi2 exec-path-from-shell company-ghc avy))))
