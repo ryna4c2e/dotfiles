@@ -21,6 +21,8 @@ alias bc="bc -q"
 alias ed="ed -p '> '"
 alias csi="rlwrap csi -q"
 
+alias youtube-webm="youtube-dl -f 248+251"
+
 autoload -Uz compinit
 compinit -u
 
