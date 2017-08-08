@@ -41,6 +41,7 @@ setopt autocd auto_pushd correct nolistbeep cdablevars histignoredups noclobber 
 source ~/.git-prompt.sh
 setopt PROMPT_SUBST
 setopt TRANSIENT_RPROMPT
+setopt IGNOREEOF
 
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
@@ -65,7 +66,9 @@ zmodload -i zsh/mathfunc
 umask 002
 
 # chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+if type /usr/local/opt/chruby/share/chruby/chruby.sh > /dev/null; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+fi
 
 cd ~/Desktop/
