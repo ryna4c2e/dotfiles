@@ -23,6 +23,8 @@ alias csi="rlwrap csi -q"
 
 alias youtube-webm="youtube-dl -f 248+251"
 
+alias blender="/Applications/Blender.app/Contents/MacOS/blender"
+
 autoload -Uz compinit
 compinit -u
 
