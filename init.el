@@ -197,6 +197,16 @@
  )
 (put 'erase-buffer 'disabled nil)
 
+;; ;; Python
+;; (require 'py-autopep8)
+;; (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
+;; (require 'flymake-python-pyflakes)
+
+;; (flymake-python-pyflakes-load)
+;; (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+
+
 
 ;; Ruby
 ;(require 'ruby-electric)
