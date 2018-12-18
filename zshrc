@@ -21,6 +21,8 @@ alias bc="bc -q"
 alias ed="ed -p '> '"
 alias csi="rlwrap csi -q"
 
+alias luajitlatex='luajittex --fmt=luajitlatex.fmt --halt-on-error'
+
 autoload -Uz compinit
 compinit -u
 

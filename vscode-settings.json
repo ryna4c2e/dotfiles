@@ -1,0 +1,47 @@
+// 既定の設定を上書きするには、このファイル内に設定を挿入します
+{
+    "workbench.colorTheme": "Quiet Light",
+    "keyboard.dispatch": "keyCode",
+    "isabelle.home": "/Applications/Isabelle2017.app/Isabelle",
+    "prettifySymbolsMode.substitutions": [
+        {
+            "language": "isabelle",
+            "revealOn": "none",
+            "adjustCursorMovement": true,
+            "prettyCursor": "none",
+            "substitutions": [
+            ]
+        },
+        {
+            "language": "isabelle-ml",
+            "revealOn": "none",
+            "adjustCursorMovement": true,
+            "prettyCursor": "none",
+            "substitutions": []
+        }
+    ],
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.renderIndentGuides": false,
+    "editor.rulers": [80, 100],
+    "editor.wordBasedSuggestions": true,
+    "workbench.sideBar.location": "left",
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "editor.minimap.enabled": false,
+    "editor.scrollBeyondLastLine": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.olean": true
+    },
+    "workbench.startupEditor": "none",
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
+    "python.linting.pylintPath": "/usr/local/bin/pylint",
+    "editor.tabSize": 2
+}
+        
