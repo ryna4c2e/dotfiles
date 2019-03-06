@@ -7,7 +7,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias javac="javac -J-Dfile.encoding=UTF-8 -encoding UTF-8 -Xlint:unchecked"
 alias java="java -Dfile.encoding=UTF-8"
-
+alias isabelle="/Applications/Isabelle2017.app/Isabelle/bin/isabelle"
 alias editpref="vi ~/.zshrc"
 alias editenvs="open ~/.MacOSX/environment.plist"
 alias calc='open -a Calculator.app'
@@ -20,7 +20,7 @@ alias swipl="swipl -q"
 alias bc="bc -q"
 alias ed="ed -p '> '"
 alias csi="rlwrap csi -q"
-
+alias gitstatus="git status"
 alias luajitlatex='luajittex --fmt=luajitlatex.fmt --halt-on-error'
 
 autoload -Uz compinit
