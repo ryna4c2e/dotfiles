@@ -23,6 +23,10 @@ alias csi="rlwrap csi -q"
 alias gitstatus="git status"
 alias luajitlatex='luajittex --fmt=luajitlatex.fmt --halt-on-error'
 
+alias youtube-webm="youtube-dl -f 248+251"
+
+alias blender="/Applications/Blender.app/Contents/MacOS/blender"
+
 autoload -Uz compinit
 compinit -u
 
@@ -41,6 +45,7 @@ setopt autocd auto_pushd correct nolistbeep cdablevars histignoredups noclobber 
 source ~/.git-prompt.sh
 setopt PROMPT_SUBST
 setopt TRANSIENT_RPROMPT
+setopt IGNOREEOF
 
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
@@ -65,7 +70,9 @@ zmodload -i zsh/mathfunc
 umask 002
 
 # chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+if type /usr/local/opt/chruby/share/chruby/chruby.sh > /dev/null; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+fi
 
 cd ~/Desktop/
