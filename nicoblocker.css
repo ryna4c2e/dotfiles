@@ -1,0 +1,22 @@
+/* niconico */
+div#textMarquee, div.MarqueeContainer {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+div#LEFT_AD_ELEMENT, div#RIGHT_AD_ELEMENT {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* Twitter */
+div[aria-label="トレンド"] {
+  display: none !important;
+}
+
+/* cybozushiki */
+header.l-header,
+header.l-header::after,
+div.ac-det-share-footer {
+  display: none! important;
+}
